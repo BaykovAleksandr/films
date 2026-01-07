@@ -1,0 +1,22 @@
+.heading {
+  font-weight: 600;
+  line-height: 125%;
+  letter-spacing: -0.02em;
+  color: #ebeef5;
+  margin: 0;
+}
+
+.h1 {
+  composes: heading;
+  font-size: 64px;
+}
+
+.h2 {
+  composes: heading;
+  font-size: 48px;
+}
+
+.h3 {
+  composes: heading;
+  font-size: 32px;
+}
