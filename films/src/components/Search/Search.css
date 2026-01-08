@@ -9,6 +9,9 @@
   gap: 12px;
   width: 100%;
   max-width: 400px;
+  margin-left: 200px;
+  height: 48px;
+  
 }
 
 .search:focus-within {
