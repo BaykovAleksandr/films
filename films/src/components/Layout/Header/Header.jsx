@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Header.css";
+import logo from "../../../assets/logo.svg";
 
 
 const Header = () => {
@@ -16,7 +17,7 @@ const Header = () => {
     <header className="header">
       <div className="header-container">
         <div className="logo-section">
-          <img src="src\assets\logo.svg" alt="Логотип" className="logo-image" />
+          <img src={logo} alt="Логотип" className="logo-image" />
         </div>
 
         <nav className="nav-menu">
