@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Search.css";
+import styles from "./Search.module.css";
 
 const Search = ({
   placeholder = "Введите название",
@@ -15,14 +15,14 @@ const Search = ({
   };
 
   return (
-    <form className="search" onSubmit={handleSubmit}>
-      {iconSrc && <img src={iconSrc} alt="" className="search-icon" />}
+    <form className={styles.search} onSubmit={handleSubmit}>
+      {iconSrc && <img src={iconSrc} alt="" className={styles["search-icon"]} />}
       <input
         type="text"
         placeholder={placeholder}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className="search-input"
+        className={styles["search-input"]}
         {...props}
       />
     </form>

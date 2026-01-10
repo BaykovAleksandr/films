@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./Header.css";
+import styles from "./Header.module.css";
 import logo from "../../../assets/logo.svg";
 
 
 const Header = () => {
-  const [activeLink, setActiveLink] = useState("movies");
+  const [activeLink, setActiveLink] = useState("my-movies");
   const moviesCount = 2;
 
   const navItems = [
@@ -14,18 +14,18 @@ const Header = () => {
   ];
 
   return (
-    <header className="header">
-      <div className="header-container">
-        <div className="logo-section">
-          <img src={logo} alt="Логотип" className="logo-image" />
+    <header className={styles.header}>
+      <div className={styles['header-container']}>
+        <div className={styles["logo-section"]}>
+          <img src={logo} alt="Логотип" className={styles["logo-image"]} />
         </div>
 
-        <nav className="nav-menu">
+        <nav className={styles["nav-menu"]}>
           {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
-              className={`nav-link ${activeLink === item.id ? "active" : ""}`}
+              className={`${styles["nav-link"]} ${activeLink === item.id ? styles.active : ""}`}
               onClick={(e) => {
                 e.preventDefault();
                 setActiveLink(item.id);
@@ -34,7 +34,7 @@ const Header = () => {
               {item.label}
 
               {item.id === "my-movies" && (
-                <span className="movies-count">{moviesCount}</span>
+                <span className={styles["movies-count"]}>{moviesCount}</span>
               )}
             </a>
           ))}

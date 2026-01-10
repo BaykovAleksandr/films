@@ -1,6 +1,7 @@
 import React from "react";
-import "./MovieCard.css";
+import styles from "./MovieCard.module.css";
 import StarIcon from "../../assets/star.png";
+import cn from 'classnames';
 
 const MovieCard = ({
   title,
@@ -23,26 +24,26 @@ const MovieCard = ({
   };
 
   return (
-    <div className="movie-card">
-      <div className="poster-container">
+    <div className={styles["movie-card"]}>
+      <div className={styles["poster-container"]}>
         <img
           src={posterUrl}
           alt={`Постер фильма "${title}"`}
-          className="movie-poster"
+          className={styles["movie-poster"]}
           onError={handleImageError}
         />
 
-        <div className="rating-sticker">
-          <img src={StarIcon} alt="Рейтинг" className="star-icon" />
-          <span className="rating-value">{rating}</span>
+        <div className={styles["rating-sticker"]}>
+          <img src={StarIcon} alt="Рейтинг" className={styles["star-icon"]} />
+          <span className={styles["rating-value"]}>{rating}</span>
         </div>
       </div>
 
-      <div className="movie-info">
-        <h3 className="movie-title">{title}</h3>
+      <div className={styles["movie-info"]}>
+        <h3 className={styles["movie-title"]}>{title}</h3>
 
         <button
-          className={`favorite-button ${isFavorite ? "favorite-active" : ""}`}
+          className={cn(styles["favorite-button"], {[styles["favorite-active"]]: isFavorite})}
           onClick={handleFavoriteClick}
         >
           {isFavorite ? "В избранном" : "В избранное"}
