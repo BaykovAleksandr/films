@@ -1,42 +1,122 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
+  color: #ffffff;
+  background: #0a0f1c;
+  overflow-x: hidden;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.App {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.page-title {
+  color: #FFFFFF;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 32px 0 40px; /* Добавили больше отступа снизу */
+}
+
+/* СЕТКА КАРТОЧЕК - оптимизирована под контейнер 1600px */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
+  gap: 24px;
+  margin-bottom: 60px;
+  justify-items: center; /* Центрируем карточки внутри ячеек */
+}
+
+/* Альтернатива: фиксированное количество колонок для идеального заполнения */
+.movies-grid.fixed-columns {
+  display: grid;
+  grid-template-columns: repeat(5, 282px); /* 5 колонок по 282px = 1410px */
+  gap: 24px;
+  justify-content: center; /* Центрируем всю сетку */
+  margin-bottom: 60px;
+}
+
+/* Рассчитываем: (282px * 5) + (24px * 4) = 1410px + 96px = 1506px < 1600px */
+
+/* Адаптивность для контейнера 1600px */
+@media (max-width: 1600px) {
+  .movies-grid.fixed-columns {
+    grid-template-columns: repeat(4, 282px); /* 4 колонки на экранах до 1600px */
+    /* (282px * 4) + (24px * 3) = 1128px + 72px = 1200px */
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 1200px) {
+  .movies-grid.fixed-columns {
+    grid-template-columns: repeat(3, 282px); /* 3 колонки */
+    /* (282px * 3) + (24px * 2) = 846px + 48px = 894px */
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 900px) {
+  .movies-grid.fixed-columns {
+    grid-template-columns: repeat(2, 282px); /* 2 колонки */
+    /* (282px * 2) + (24px * 1) = 564px + 24px = 588px */
+  }
+  
+  .movies-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+    max-width: 588px; /* Ограничиваем ширину */
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
-.card {
-  padding: 2em;
+@media (max-width: 620px) {
+  .movies-grid.fixed-columns {
+    grid-template-columns: 282px; /* 1 колонка */
+    justify-items: center;
+  }
+  
+  .movies-grid {
+    grid-template-columns: 1fr;
+    max-width: 282px;
+  }
 }
 
-.read-the-docs {
-  color: #888;
+/* Для автоматической сетки с ограничением по ширине */
+.movies-grid.auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 282px);
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+/* Убираем горизонтальный скролл */
+.movies-grid {
+  overflow: hidden;
 }
